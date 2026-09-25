@@ -18,10 +18,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Gitleaks
-        uses: gitleaks/gitleaks-action@v2
+      # Open-source CLI (no GITLEAKS_LICENSE). Do not use gitleaks-action@v2 on orgs.
+      - name: Secret scan (gitleaks CLI)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: '8.24.0'
+        run: |
+          curl -sSL \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin gitleaks
+          gitleaks version
+          gitleaks detect --source=. --verbose --redact
 
   quality:
     name: Quality (${{ matrix.os }})

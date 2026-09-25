@@ -76,7 +76,7 @@ npm run tauri build
 GitHub Actions do **not** run on push or pull request. Dispatch workflows from the repo UI:
 
 1. Open **Actions**.
-2. Select **CI** (lint, svelte-check, Vitest, rustfmt, clippy, cargo test, gitleaks) or **Release** (Tauri build + updater artifacts).
+2. Select **CI** (lint, svelte-check, Vitest, rustfmt, clippy, cargo test, gitleaks CLI secret scan) or **Release** (Tauri build + updater artifacts).
 3. Click **Run workflow**, choose the branch, then **Run workflow**.
 
 | Workflow | File                                                             | Notes                                                                  |
