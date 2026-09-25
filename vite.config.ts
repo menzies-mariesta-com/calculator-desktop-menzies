@@ -16,7 +16,10 @@ const pkg = JSON.parse(
 
 // Vite 8 client transforms skip bare `define` replacement (globals only; ES modules
 // cannot see them). Write a tiny constant module instead of importing package.json.
+// Emit Prettier-compliant output (singleQuote: true). JSON.stringify uses double quotes
+// and would fail `prettier --check` after every Vite config load.
 const appVersionPath = fileURLToPath(new URL('./src/lib/tool/app-version.ts', rootUrl));
+const appVersionLiteral = `'${pkg.version.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
 writeFileSync(
 	appVersionPath,
 	`/**
@@ -24,7 +27,7 @@ writeFileSync(
  * Do not import package.json from client code (Vite fs.allow 404).
  * Vite 8 does not text-replace bare \`define\` keys in client modules.
  */
-export const APP_VERSION = ${JSON.stringify(pkg.version)};
+export const APP_VERSION = ${appVersionLiteral};
 `
 );
 

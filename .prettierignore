@@ -12,4 +12,6 @@ bun.lockb
 /dist/
 /src-tauri/target/
 /src-tauri/gen/
-/project.inlang/cache/
+# Paraglide / inlang project tree (tool-managed; only settings.json is intentional).
+# Cache, .meta.json, README.md, and .lix are generated and must not fail prettier --check.
+/project.inlang/
