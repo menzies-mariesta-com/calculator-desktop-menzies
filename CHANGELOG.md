@@ -1,10 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Product icon aligned to Music water-block recipe: organic pigment blotches + mist glow, mineral ink `#1A3A48`, thick Lucide Calculator stroke; no pure black and no mist-only backdrop.
+
 ## 0.1.1
 
 - Titlebar Refresh control (left of Appearance) remounts the calculator pad.
 - Title + version drag region keeps enough horizontal space so the title is not starved by the action cluster.
-- Product icon: water-block circle backdrop (music-mobile soft mist) with thicker black Lucide Calculator stroke; no fractal splash blotches or paper outline.
+- Product icon: transitional water-block mist with black Lucide stroke (superseded; see Unreleased for full music recipe).
 
 ## 0.1.0
 

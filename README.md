@@ -5,7 +5,7 @@ Linux-first desktop calculator for Menzies OS: SvelteKit static SPA, Tauri 2, Wa
 ## App identity
 
 - Tauri identifier: `com.mariesta.menzies.calculator-desktop-menzies`
-- Icon: Lucide Calculator + water-block circle (music-mobile soft mist: paper `#F7F4EF`, mist/peach/rose circles); black Lucide stroke (~2.2), no outline; master `static/app-icon.svg`
+- Icon: Lucide Calculator + full music water-block (organic blotches + soft mist, paper `#F7F4EF`); mineral ink `#1A3A48`, stroke ~2.6 at scale 17.2, no outline; master `static/app-icon.svg`
 - Default Wash UI pigment: `vermilion`
 - Regenerate Tauri / favicon rasters: `npm run icon:export` (or `scripts/export-app-icon.sh`)
 
