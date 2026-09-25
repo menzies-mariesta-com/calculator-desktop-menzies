@@ -40,6 +40,11 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
+      # Prefer repo .gitattributes + Prettier endOfLine: lf. On Windows, avoid CRLF checkout.
+      - name: Git LF on Windows
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf input
+
       - name: Checkout
         uses: actions/checkout@v4
 
