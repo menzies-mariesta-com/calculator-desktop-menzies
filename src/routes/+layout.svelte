@@ -21,7 +21,7 @@
 </svelte:head>
 
 <div
-	class="{washRecipes.washShellFlat} flex h-dvh max-h-dvh w-full min-h-0 flex-col overflow-hidden"
+	class="{washRecipes.washShellFlat} flex h-dvh max-h-dvh min-h-0 w-full flex-col overflow-hidden"
 >
 	<Titlebar />
 	<main class="relative z-0 flex min-h-0 w-full flex-1 flex-col overflow-hidden p-2 sm:p-3 md:p-4">

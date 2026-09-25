@@ -226,18 +226,33 @@ export const UNITS_BY_CATEGORY: Record<UnitCategory, UnitDef[]> = {
 export const CATEGORY_META: CategoryMeta[] = [
 	{ id: 'length', label: 'Length', blurb: 'Distance and dimension.', icon: 'ruler' },
 	{ id: 'mass', label: 'Mass / Weight', blurb: 'Mass and common weight units.', icon: 'scale' },
-	{ id: 'temperature', label: 'Temperature', blurb: 'Celsius, Fahrenheit, and Kelvin.', icon: 'thermometer' },
+	{
+		id: 'temperature',
+		label: 'Temperature',
+		blurb: 'Celsius, Fahrenheit, and Kelvin.',
+		icon: 'thermometer'
+	},
 	{ id: 'volume', label: 'Volume / Capacity', blurb: 'Liquid and cubic measures.', icon: 'beaker' },
 	{ id: 'area', label: 'Area', blurb: 'Surface and land area.', icon: 'square' },
 	{ id: 'speed', label: 'Speed', blurb: 'Velocity and travel rate.', icon: 'gauge' },
 	{ id: 'time', label: 'Time', blurb: 'Duration from nanoseconds to years.', icon: 'clock' },
-	{ id: 'digital', label: 'Digital storage', blurb: 'Bits, bytes, and storage prefixes.', icon: 'hard-drive' },
+	{
+		id: 'digital',
+		label: 'Digital storage',
+		blurb: 'Bits, bytes, and storage prefixes.',
+		icon: 'hard-drive'
+	},
 	{ id: 'pressure', label: 'Pressure', blurb: 'Force per area.', icon: 'activity' },
 	{ id: 'energy', label: 'Energy', blurb: 'Work and heat.', icon: 'zap' },
 	{ id: 'power', label: 'Power', blurb: 'Rate of energy transfer.', icon: 'bolt' },
 	{ id: 'angle', label: 'Angle', blurb: 'Plane angle measures.', icon: 'compass' },
 	{ id: 'frequency', label: 'Frequency', blurb: 'Cycles and revolutions.', icon: 'waveform' },
-	{ id: 'data_rate', label: 'Data transfer rate', blurb: 'Network and throughput rates.', icon: 'wifi' }
+	{
+		id: 'data_rate',
+		label: 'Data transfer rate',
+		blurb: 'Network and throughput rates.',
+		icon: 'wifi'
+	}
 ];
 
 export const CATEGORY_LABELS: Record<UnitCategory, string> = Object.fromEntries(

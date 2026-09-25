@@ -43,7 +43,9 @@
 	"plugins": {
 		"updater": {
 			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDQ4Nzc0MTMzRjc1RjA5MjMKUldRakNWLzNNMEYzU0JEUTdHa1NXTkIza3RwRWxhQmhaNE4xdTZqeUcremhVb2JBaHk0TyszNzcK",
-			"endpoints": ["https://github.com/menzies-mariesta-com/calculator-desktop-menzies/releases/latest/download/latest.json"]
+			"endpoints": [
+				"https://github.com/menzies-mariesta-com/calculator-desktop-menzies/releases/latest/download/latest.json"
+			]
 		}
 	}
 }

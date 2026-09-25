@@ -198,7 +198,7 @@
 			<span class="label">
 				<span class="label-text text-base font-medium" id={labelId}>
 					{label}{#if required}<span
-							class="align-top text-sm leading-none text-error"
+							class="text-error align-top text-sm leading-none"
 							aria-hidden="true">*</span
 						>{/if}
 				</span>
@@ -223,7 +223,7 @@
 			<span
 				class={selected
 					? 'min-w-0 flex-1 truncate'
-					: 'min-w-0 flex-1 truncate text-base-content/50'}
+					: 'text-base-content/50 min-w-0 flex-1 truncate'}
 			>
 				{selected?.label ?? placeholder}
 			</span>
@@ -241,7 +241,7 @@
 				DROPDOWN_PANEL_Z,
 				placement.top ? 'mb-1' : 'mt-1',
 				menuWidth === 'auto' ? 'w-full max-w-[min(100vw-1rem,24rem)]' : '',
-				'overflow-x-hidden overflow-y-auto rounded-box border border-ink-border bg-base-100 p-2 shadow-[var(--shadow-paper-md)]',
+				'rounded-box border-ink-border bg-base-100 overflow-x-hidden overflow-y-auto border p-2 shadow-[var(--shadow-paper-md)]',
 				menuClass
 			]
 				.filter(Boolean)
@@ -251,11 +251,11 @@
 			<ul
 				id={listId}
 				role="listbox"
-				class="menu flex w-full flex-col flex-nowrap overflow-x-hidden overflow-y-auto rounded-box p-0 text-base"
+				class="menu rounded-box flex w-full flex-col flex-nowrap overflow-x-hidden overflow-y-auto p-0 text-base"
 				tabindex="-1"
 			>
 				{#if options.length === 0}
-					<li class="px-3 py-2 text-sm text-ink-muted">No options</li>
+					<li class="text-ink-muted px-3 py-2 text-sm">No options</li>
 				{:else}
 					{#each options as opt (opt.value)}
 						{@const active = value === opt.value}

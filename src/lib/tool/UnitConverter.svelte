@@ -25,9 +25,7 @@
 	const meta = $derived(getCategoryMeta(category));
 	const amount = $derived(Number(amountText));
 	const amountValid = $derived(amountText.trim() !== '' && Number.isFinite(amount));
-	const result = $derived(
-		amountValid ? convertUnit(amount, fromId, toId, category) : Number.NaN
-	);
+	const result = $derived(amountValid ? convertUnit(amount, fromId, toId, category) : Number.NaN);
 	const fromLabel = $derived(getUnitLabel(category, fromId));
 	const toLabel = $derived(getUnitLabel(category, toId));
 
@@ -59,21 +57,21 @@
 	aria-label={m.mode_units()}
 >
 	<header
-		class="flex shrink-0 items-start gap-[clamp(0.75rem,2vw,1.25rem)] border-b border-ink-border/15 px-[clamp(0.875rem,2.5vw,1.5rem)] py-[clamp(0.75rem,2vw,1.15rem)]"
+		class="border-ink-border/15 flex shrink-0 items-start gap-[clamp(0.75rem,2vw,1.25rem)] border-b px-[clamp(0.875rem,2.5vw,1.5rem)] py-[clamp(0.75rem,2vw,1.15rem)]"
 	>
 		<div
-			class="flex size-[clamp(2.25rem,5vw,2.75rem)] shrink-0 items-center justify-center rounded-box border border-ink-border/20 bg-primary/10 text-primary"
+			class="rounded-box border-ink-border/20 bg-primary/10 text-primary flex size-[clamp(2.25rem,5vw,2.75rem)] shrink-0 items-center justify-center border"
 			aria-hidden="true"
 		>
 			{@render categoryIcon(meta.icon, 'size-[clamp(1.15rem,2.8vw,1.35rem)]')}
 		</div>
 		<div class="min-w-0 flex-1">
 			<h2
-				class="font-display text-[clamp(1.15rem,3.2vw,1.65rem)] font-bold leading-tight text-primary"
+				class="font-display text-primary text-[clamp(1.15rem,3.2vw,1.65rem)] leading-tight font-bold"
 			>
 				{m.unit_convert_title()}
 			</h2>
-			<p class="mt-0.5 text-[clamp(0.8rem,2vw,0.95rem)] text-base-content/65">
+			<p class="text-base-content/65 mt-0.5 text-[clamp(0.8rem,2vw,0.95rem)]">
 				{meta.blurb}
 			</p>
 		</div>
@@ -83,7 +81,7 @@
 		class="wash-allow-dropdown-overflow flex min-h-0 flex-1 flex-col gap-[clamp(0.85rem,2.2vw,1.35rem)] overflow-y-auto overscroll-contain p-[clamp(0.875rem,2.5vw,1.5rem)]"
 	>
 		<div
-			class="wash-allow-dropdown-overflow rounded-box border border-ink-border/15 bg-base-200/35 p-[clamp(0.75rem,2vw,1.1rem)]"
+			class="wash-allow-dropdown-overflow rounded-box border-ink-border/15 bg-base-200/35 border p-[clamp(0.75rem,2vw,1.1rem)]"
 		>
 			<WashSelect
 				label={m.unit_category()}
@@ -96,12 +94,12 @@
 		</div>
 
 		<div
-			class="wash-allow-dropdown-overflow flex flex-col gap-[clamp(0.75rem,2vw,1.1rem)] rounded-box border border-ink-border/15 bg-base-100/50 p-[clamp(0.75rem,2vw,1.1rem)]"
+			class="wash-allow-dropdown-overflow rounded-box border-ink-border/15 bg-base-100/50 flex flex-col gap-[clamp(0.75rem,2vw,1.1rem)] border p-[clamp(0.75rem,2vw,1.1rem)]"
 		>
 			<label class="flex flex-col gap-1.5">
-				<span class="text-[clamp(0.85rem,2vw,1rem)] font-medium text-base-content/80">
+				<span class="text-base-content/80 text-[clamp(0.85rem,2vw,1rem)] font-medium">
 					{m.unit_amount()}<span
-						class="align-top text-sm leading-none text-error"
+						class="text-error align-top text-sm leading-none"
 						aria-hidden="true">*</span
 					>
 				</span>
@@ -153,23 +151,25 @@
 		</div>
 
 		<div
-			class="flex min-h-[clamp(7rem,22vh,12rem)] flex-1 flex-col justify-center gap-2 rounded-box border border-ink-border/20 bg-base-200/60 px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(1rem,2.5vw,1.35rem)]"
+			class="rounded-box border-ink-border/20 bg-base-200/60 flex min-h-[clamp(7rem,22vh,12rem)] flex-1 flex-col justify-center gap-2 border px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(1rem,2.5vw,1.35rem)]"
 			role="status"
 			aria-live="polite"
 		>
-			<p class="text-[clamp(0.85rem,2vw,1rem)] font-medium tracking-wide text-base-content/65 uppercase">
+			<p
+				class="text-base-content/65 text-[clamp(0.85rem,2vw,1rem)] font-medium tracking-wide uppercase"
+			>
 				{m.unit_result()}
 			</p>
 			{#if amountValid}
 				<p
-					class="font-mono text-[clamp(1.75rem,6vw,3rem)] leading-none font-semibold tabular-nums tracking-tight text-base-content"
+					class="text-base-content font-mono text-[clamp(1.75rem,6vw,3rem)] leading-none font-semibold tracking-tight tabular-nums"
 				>
 					{formatUnitValue(result)}
 				</p>
-				<p class="text-[clamp(0.85rem,2vw,1.05rem)] text-base-content/70">
+				<p class="text-base-content/70 text-[clamp(0.85rem,2vw,1.05rem)]">
 					{toLabel}
 				</p>
-				<p class="mt-1 font-mono text-[clamp(0.75rem,1.8vw,0.9rem)] text-base-content/55">
+				<p class="text-base-content/55 mt-1 font-mono text-[clamp(0.75rem,1.8vw,0.9rem)]">
 					{formatUnitValue(amount)}
 					{fromLabel}
 					=
@@ -177,7 +177,9 @@
 					{toLabel}
 				</p>
 			{:else}
-				<p class="text-[clamp(1rem,2.5vw,1.25rem)] text-base-content/55">{m.unit_invalid_amount()}</p>
+				<p class="text-base-content/55 text-[clamp(1rem,2.5vw,1.25rem)]">
+					{m.unit_invalid_amount()}
+				</p>
 			{/if}
 		</div>
 	</div>

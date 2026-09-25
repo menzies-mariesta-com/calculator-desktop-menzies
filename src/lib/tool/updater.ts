@@ -25,7 +25,9 @@ function isTauriRuntime(): boolean {
  * Check GitHub Releases via tauri-plugin-updater, then download/install if the user confirms.
  * Requires configured pubkey and OWNER/REPO endpoint in tauri.conf.json.
  */
-export async function runUpdateCheck(confirmInstall: (version: string) => boolean): Promise<UpdateFlowResult> {
+export async function runUpdateCheck(
+	confirmInstall: (version: string) => boolean
+): Promise<UpdateFlowResult> {
 	if (!isTauriRuntime()) {
 		return {
 			outcome: 'unavailable',

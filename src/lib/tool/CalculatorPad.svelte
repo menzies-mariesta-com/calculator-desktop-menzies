@@ -10,11 +10,7 @@
 		type CalcSnapshot,
 		type HistoryEntry
 	} from '$lib/tool/calculator';
-	import {
-		loadSettings,
-		saveSettings,
-		type CalcPadMode
-	} from '$lib/store/local-storage/settings';
+	import { loadSettings, saveSettings, type CalcPadMode } from '$lib/store/local-storage/settings';
 	import UnitConverter from '$lib/tool/UnitConverter.svelte';
 	import WashIcon from '$lib/tool/WashIcon.svelte';
 	import { washIcons } from '$lib/tool/wash-icons';
@@ -231,15 +227,51 @@
 
 	const scientificKeys = $derived.by((): KeyDef[] => [
 		{ id: 'sin', label: 'sin', action: () => insertFn('sin'), class: 'btn-ghost', aria: m.sine() },
-		{ id: 'cos', label: 'cos', action: () => insertFn('cos'), class: 'btn-ghost', aria: m.cosine() },
-		{ id: 'tan', label: 'tan', action: () => insertFn('tan'), class: 'btn-ghost', aria: m.tangent() },
+		{
+			id: 'cos',
+			label: 'cos',
+			action: () => insertFn('cos'),
+			class: 'btn-ghost',
+			aria: m.cosine()
+		},
+		{
+			id: 'tan',
+			label: 'tan',
+			action: () => insertFn('tan'),
+			class: 'btn-ghost',
+			aria: m.tangent()
+		},
 		{ id: 'log', label: 'log', action: () => insertFn('log'), class: 'btn-ghost', aria: m.log10() },
-		{ id: 'ln', label: 'ln', action: () => insertFn('ln'), class: 'btn-ghost', aria: m.natural_log() },
+		{
+			id: 'ln',
+			label: 'ln',
+			action: () => insertFn('ln'),
+			class: 'btn-ghost',
+			aria: m.natural_log()
+		},
 		{ id: 'sqrt', label: '√', action: () => insertFn('sqrt'), class: 'btn-ghost', aria: m.sqrt() },
 		{ id: 'pow', label: 'xʸ', action: () => appendToken('^'), class: 'btn-ghost', aria: m.power() },
-		{ id: 'lparen', label: '(', action: () => appendToken('('), class: 'btn-ghost', aria: m.open_paren() },
-		{ id: 'rparen', label: ')', action: () => appendToken(')'), class: 'btn-ghost', aria: m.close_paren() },
-		{ id: 'pi', label: 'π', action: () => appendToken('π'), class: 'btn-ghost', aria: m.pi_const() },
+		{
+			id: 'lparen',
+			label: '(',
+			action: () => appendToken('('),
+			class: 'btn-ghost',
+			aria: m.open_paren()
+		},
+		{
+			id: 'rparen',
+			label: ')',
+			action: () => appendToken(')'),
+			class: 'btn-ghost',
+			aria: m.close_paren()
+		},
+		{
+			id: 'pi',
+			label: 'π',
+			action: () => appendToken('π'),
+			class: 'btn-ghost',
+			aria: m.pi_const()
+		},
 		{ id: 'e', label: 'e', action: () => appendToken('e'), class: 'btn-ghost', aria: m.e_const() },
 		{
 			id: 'angle',
@@ -286,7 +318,7 @@
 			type="button"
 			class="btn join-item font-display cursor-pointer {compact
 				? 'btn-sm flex-1 text-[clamp(0.9rem,2.8vw,1.05rem)]'
-				: 'btn-md text-[clamp(1rem,1.8vw,1.2rem)] lg:btn-lg'}"
+				: 'btn-md lg:btn-lg text-[clamp(1rem,1.8vw,1.2rem)]'}"
 			class:btn-primary={appView === 'calculator'}
 			class:btn-ghost={appView !== 'calculator'}
 			role="tab"
@@ -299,7 +331,7 @@
 			type="button"
 			class="btn join-item font-display cursor-pointer {compact
 				? 'btn-sm flex-1 text-[clamp(0.9rem,2.8vw,1.05rem)]'
-				: 'btn-md text-[clamp(1rem,1.8vw,1.2rem)] lg:btn-lg'}"
+				: 'btn-md lg:btn-lg text-[clamp(1rem,1.8vw,1.2rem)]'}"
 			class:btn-primary={appView === 'units'}
 			class:btn-ghost={appView !== 'units'}
 			role="tab"
@@ -317,7 +349,7 @@
 			type="button"
 			class="btn join-item font-display cursor-pointer {compact
 				? 'btn-sm flex-1 text-[clamp(0.9rem,2.8vw,1.05rem)]'
-				: 'btn-md text-[clamp(1rem,1.8vw,1.2rem)] lg:btn-lg'}"
+				: 'btn-md lg:btn-lg text-[clamp(1rem,1.8vw,1.2rem)]'}"
 			class:btn-secondary={padMode === 'standard'}
 			class:btn-ghost={padMode !== 'standard'}
 			role="tab"
@@ -330,7 +362,7 @@
 			type="button"
 			class="btn join-item font-display cursor-pointer {compact
 				? 'btn-sm flex-1 text-[clamp(0.9rem,2.8vw,1.05rem)]'
-				: 'btn-md text-[clamp(1rem,1.8vw,1.2rem)] lg:btn-lg'}"
+				: 'btn-md lg:btn-lg text-[clamp(1rem,1.8vw,1.2rem)]'}"
 			class:btn-secondary={padMode === 'scientific'}
 			class:btn-ghost={padMode !== 'scientific'}
 			role="tab"
@@ -347,7 +379,7 @@
 		type="button"
 		class="{washRecipes.btnRipple} {compact
 			? 'btn-sm w-full text-[clamp(0.9rem,2.8vw,1.05rem)]'
-			: 'btn-md text-[clamp(1rem,1.8vw,1.15rem)] lg:btn-lg'}"
+			: 'btn-md lg:btn-lg text-[clamp(1rem,1.8vw,1.15rem)]'}"
 		class:cursor-pointer={undoStack.length > 0}
 		class:cursor-not-allowed={undoStack.length === 0}
 		disabled={undoStack.length === 0}
@@ -364,16 +396,16 @@
 		aria-label={m.history_title()}
 	>
 		<div
-			class="shrink-0 border-b border-ink-border/15 px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.65rem,1.8vw,0.85rem)]"
+			class="border-ink-border/15 shrink-0 border-b px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.65rem,1.8vw,0.85rem)]"
 		>
-			<h2
-				class="font-display text-[clamp(0.95rem,2.2vw,1.15rem)] font-bold text-primary"
-			>
+			<h2 class="font-display text-primary text-[clamp(0.95rem,2.2vw,1.15rem)] font-bold">
 				{m.history_title()}
 			</h2>
 		</div>
 		{#if history.length === 0}
-			<p class="px-[clamp(0.75rem,2vw,1rem)] py-[clamp(1rem,2.5vw,1.25rem)] text-[clamp(0.85rem,2vw,1rem)] text-base-content/60">
+			<p
+				class="text-base-content/60 px-[clamp(0.75rem,2vw,1rem)] py-[clamp(1rem,2.5vw,1.25rem)] text-[clamp(0.85rem,2vw,1rem)]"
+			>
 				{m.history_empty()}
 			</p>
 		{:else}
@@ -384,15 +416,16 @@
 					<li>
 						<button
 							type="button"
-							class="flex w-full cursor-pointer flex-col gap-1 rounded-lg px-[clamp(0.65rem,1.8vw,0.85rem)] py-[clamp(0.55rem,1.5vw,0.7rem)] text-left hover:bg-primary/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary"
+							class="hover:bg-primary/15 focus-visible:outline-primary flex w-full cursor-pointer flex-col gap-1 rounded-lg px-[clamp(0.65rem,1.8vw,0.85rem)] py-[clamp(0.55rem,1.5vw,0.7rem)] text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1"
 							aria-label="{m.history_pick()}: {entry.result}"
 							onclick={() => pickHistory(entry)}
 						>
-							<span class="truncate font-mono text-[clamp(0.7rem,1.8vw,0.85rem)] text-base-content/60"
+							<span
+								class="text-base-content/60 truncate font-mono text-[clamp(0.7rem,1.8vw,0.85rem)]"
 								>{entry.expression}</span
 							>
 							<span
-								class="truncate font-mono text-[clamp(0.95rem,2.2vw,1.15rem)] tabular-nums text-base-content"
+								class="text-base-content truncate font-mono text-[clamp(0.95rem,2.2vw,1.15rem)] tabular-nums"
 								>{entry.result}</span
 							>
 						</button>
@@ -429,19 +462,19 @@
 		aria-label={m.app_title()}
 	>
 		<div
-			class="flex min-h-[clamp(7rem,22vh,12rem)] shrink-0 flex-col items-end justify-end rounded-box border border-ink-border/20 bg-base-200/60 px-[clamp(0.75rem,2vw,1.25rem)] py-[clamp(0.85rem,2.2vw,1.35rem)]"
+			class="rounded-box border-ink-border/20 bg-base-200/60 flex min-h-[clamp(7rem,22vh,12rem)] shrink-0 flex-col items-end justify-end border px-[clamp(0.75rem,2vw,1.25rem)] py-[clamp(0.85rem,2.2vw,1.35rem)]"
 			role="status"
 			aria-live="polite"
 		>
 			{#if expression && !fresh}
 				<p
-					class="w-full truncate text-right font-mono text-[clamp(0.8rem,2vw,1.1rem)] text-base-content/55"
+					class="text-base-content/55 w-full truncate text-right font-mono text-[clamp(0.8rem,2vw,1.1rem)]"
 				>
 					{expression}
 				</p>
 			{/if}
 			<p
-				class="w-full truncate text-right font-mono text-[clamp(2rem,8vw,4.25rem)] leading-none tabular-nums tracking-tight text-base-content"
+				class="text-base-content w-full truncate text-right font-mono text-[clamp(2rem,8vw,4.25rem)] leading-none tracking-tight tabular-nums"
 			>
 				{display}
 			</p>
@@ -480,7 +513,9 @@
 {/snippet}
 
 {#snippet sidebarBody()}
-	<div class="flex min-h-0 flex-1 flex-col gap-[clamp(0.65rem,2vw,0.9rem)] overflow-hidden p-[clamp(0.75rem,2.5vw,1rem)]">
+	<div
+		class="flex min-h-0 flex-1 flex-col gap-[clamp(0.65rem,2vw,0.9rem)] overflow-hidden p-[clamp(0.75rem,2.5vw,1rem)]"
+	>
 		{@render modeTabs(true)}
 
 		{#if appView === 'calculator'}
@@ -488,10 +523,8 @@
 			{@render previousButton(true)}
 
 			{#if padMode === 'scientific'}
-				<div
-					class="{washRecipes.washPanel} shrink-0 overflow-hidden p-[clamp(0.5rem,2vw,0.75rem)]"
-				>
-					<p class="mb-2 font-display text-[clamp(0.85rem,2.2vw,1rem)] font-bold text-secondary">
+				<div class="{washRecipes.washPanel} shrink-0 overflow-hidden p-[clamp(0.5rem,2vw,0.75rem)]">
+					<p class="font-display text-secondary mb-2 text-[clamp(0.85rem,2.2vw,1rem)] font-bold">
 						{m.mode_scientific()}
 					</p>
 					{@render scientificPad(true)}
@@ -529,10 +562,10 @@
 			</button>
 		</div>
 		<div class="min-w-0 flex-1">
-			<p class="font-display text-[clamp(1rem,3.5vw,1.2rem)] font-bold text-primary">
+			<p class="font-display text-primary text-[clamp(1rem,3.5vw,1.2rem)] font-bold">
 				{m.mode_calculator()}
 			</p>
-			<p class="truncate text-[clamp(0.7rem,2.2vw,0.8rem)] text-base-content/55">
+			<p class="text-base-content/55 truncate text-[clamp(0.7rem,2.2vw,0.8rem)]">
 				{m.sidebar_tools()}
 			</p>
 		</div>
@@ -566,10 +599,15 @@
 
 	<!-- Mobile overlay drawer -->
 	{#if sidebarOpen && !isDesktop}
-		<div class="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label={m.sidebar_tools()}>
+		<div
+			class="fixed inset-0 z-50 md:hidden"
+			role="dialog"
+			aria-modal="true"
+			aria-label={m.sidebar_tools()}
+		>
 			<button
 				type="button"
-				class="absolute inset-0 cursor-pointer bg-base-content/40"
+				class="bg-base-content/40 absolute inset-0 cursor-pointer"
 				aria-label={m.sidebar_overlay()}
 				onclick={closeSidebar}
 			></button>
@@ -578,9 +616,9 @@
 				class="{washRecipes.washPanelFlush} absolute inset-y-0 right-0 flex w-[min(100%,24rem)] max-w-[100vw] flex-col overflow-hidden shadow-[var(--shadow-paper-md)]"
 			>
 				<div
-					class="flex shrink-0 items-center justify-between gap-2 border-b border-ink-border/15 px-[clamp(0.75rem,2.5vw,1rem)] py-[clamp(0.55rem,2vw,0.75rem)]"
+					class="border-ink-border/15 flex shrink-0 items-center justify-between gap-2 border-b px-[clamp(0.75rem,2.5vw,1rem)] py-[clamp(0.55rem,2vw,0.75rem)]"
 				>
-					<h2 class="font-display text-[clamp(1rem,3vw,1.2rem)] font-bold text-primary">
+					<h2 class="font-display text-primary text-[clamp(1rem,3vw,1.2rem)] font-bold">
 						{m.sidebar_tools()}
 					</h2>
 					<div class={washRecipes.tooltipIcon('secondary', 'left')} data-tip={m.sidebar_close()}>

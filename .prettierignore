@@ -5,5 +5,11 @@ yarn.lock
 bun.lock
 bun.lockb
 
-# Miscellaneous
+# Build / generated
 /static/
+/.svelte-kit/
+/build/
+/dist/
+/src-tauri/target/
+/src-tauri/gen/
+/project.inlang/cache/

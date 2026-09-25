@@ -18,9 +18,7 @@
 	let pigment = $state<WatercolorThemeId>(getPigment());
 	let themeOpen = $state(false);
 	let updating = $state(false);
-	let toast = $state<{ tone: 'success' | 'error' | 'info' | 'warning'; text: string } | null>(
-		null
-	);
+	let toast = $state<{ tone: 'success' | 'error' | 'info' | 'warning'; text: string } | null>(null);
 	let toastTimer: ReturnType<typeof setTimeout> | null = null;
 
 	function showToast(tone: 'success' | 'error' | 'info' | 'warning', text: string) {
@@ -130,7 +128,7 @@
 
 <header
 	data-titlebar
-	class="relative z-[200] flex h-10 shrink-0 items-center overflow-visible border-b border-ink-border/15 bg-base-100/90 px-1 backdrop-blur-sm"
+	class="border-ink-border/15 bg-base-100/90 relative z-[200] flex h-10 shrink-0 items-center overflow-visible border-b px-1 backdrop-blur-sm"
 >
 	<div
 		class="flex min-w-0 flex-1 cursor-grab items-center gap-2 px-2 active:cursor-grabbing"
@@ -138,11 +136,10 @@
 		role="presentation"
 	>
 		<span class="inline-flex min-w-0 items-baseline gap-1">
-			<span class="font-display truncate text-sm font-semibold tracking-wide text-base-content"
+			<span class="font-display text-base-content truncate text-sm font-semibold tracking-wide"
 				>{m.app_title()}</span
 			>
-			<span
-				class="relative top-[0.15em] shrink-0 text-[0.65em] italic leading-none opacity-50"
+			<span class="relative top-[0.15em] shrink-0 text-[0.65em] leading-none italic opacity-50"
 				>{APP_VERSION}</span
 			>
 		</span>
@@ -171,11 +168,11 @@
 
 		{#if themeOpen}
 			<div
-				class="absolute right-0 top-full z-[230] mt-1 flex max-h-[min(70vh,28rem)] w-56 flex-col overflow-x-hidden overflow-y-hidden rounded-box border border-ink-border bg-base-100 p-1 shadow-md"
+				class="rounded-box border-ink-border bg-base-100 absolute top-full right-0 z-[230] mt-1 flex max-h-[min(70vh,28rem)] w-56 flex-col overflow-x-hidden overflow-y-hidden border p-1 shadow-md"
 				role="menu"
 			>
 				<div class="shrink-0">
-					<p class="px-2 py-1 text-xs font-medium text-base-content/60">{m.theme_mode_section()}</p>
+					<p class="text-base-content/60 px-2 py-1 text-xs font-medium">{m.theme_mode_section()}</p>
 					<ul class="menu menu-sm flex w-full flex-col flex-nowrap p-0">
 						<li role="none">
 							<button
@@ -205,8 +202,10 @@
 							>
 						</li>
 					</ul>
-					<div class="my-1 border-t border-ink-border/40"></div>
-					<p class="px-2 py-1 text-xs font-medium text-base-content/60">{m.theme_pigment_section()}</p>
+					<div class="border-ink-border/40 my-1 border-t"></div>
+					<p class="text-base-content/60 px-2 py-1 text-xs font-medium">
+						{m.theme_pigment_section()}
+					</p>
 				</div>
 				<ul
 					class="menu menu-sm flex min-h-0 w-full flex-1 flex-col flex-nowrap overflow-x-hidden overflow-y-auto overscroll-contain p-0"
@@ -221,7 +220,7 @@
 								onclick={() => choosePigment(item.id)}
 							>
 								<span
-									class="size-3.5 shrink-0 rounded-full border border-ink-border"
+									class="border-ink-border size-3.5 shrink-0 rounded-full border"
 									style="background: radial-gradient(circle at 35% 30%, color-mix(in oklab, white 70%, transparent) 0%, {item.swatch} 60%, color-mix(in oklab, {item.swatch} 70%, black) 100%)"
 									aria-hidden="true"
 								></span>
@@ -286,7 +285,10 @@
 			</button>
 		</div>
 
-		<div class="{washRecipes.tooltipIcon('error', 'bottom')} relative z-[220]" data-tip={m.window_close()}>
+		<div
+			class="{washRecipes.tooltipIcon('error', 'bottom')} relative z-[220]"
+			data-tip={m.window_close()}
+		>
 			<button
 				type="button"
 				class="btn btn-ghost btn-square btn-sm btn-error cursor-pointer"
