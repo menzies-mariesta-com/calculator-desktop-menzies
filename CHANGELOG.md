@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Titlebar Refresh control (left of Appearance) remounts the calculator pad.
+- Title + version drag region keeps enough horizontal space so the title is not starved by the action cluster.
+
 ## 0.1.0
 
 - Initial Menzies OS calculator shell: Tauri 2, Wash UI, port 2001, custom titlebar, light/dark/system appearance, Paraglide, Zod settings.

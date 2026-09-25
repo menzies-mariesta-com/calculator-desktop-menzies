@@ -28,6 +28,7 @@ import { __iconNode as hardDrive } from 'lucide-react/dist/esm/icons/hard-drive.
 import { __iconNode as layoutGrid } from 'lucide-react/dist/esm/icons/layout-grid.mjs';
 import { __iconNode as menu } from 'lucide-react/dist/esm/icons/menu.mjs';
 import { __iconNode as minus } from 'lucide-react/dist/esm/icons/minus.mjs';
+import { __iconNode as refreshCw } from 'lucide-react/dist/esm/icons/refresh-cw.mjs';
 import { __iconNode as ruler } from 'lucide-react/dist/esm/icons/ruler.mjs';
 import { __iconNode as scale } from 'lucide-react/dist/esm/icons/scale.mjs';
 import { __iconNode as square } from 'lucide-react/dist/esm/icons/square.mjs';
@@ -43,6 +44,7 @@ export type { WashIconNode };
 export const washIcons = {
 	sun,
 	download,
+	'refresh-cw': refreshCw,
 	minus,
 	square,
 	copy,

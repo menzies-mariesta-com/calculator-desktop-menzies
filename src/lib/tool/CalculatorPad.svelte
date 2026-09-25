@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { washRecipes } from '@menzies-mariesta-com/menzies-design-wash-ui/core';
 	import { m } from '$lib/paraglide/messages.js';
 	import {
@@ -14,6 +15,7 @@
 	import UnitConverter from '$lib/tool/UnitConverter.svelte';
 	import WashIcon from '$lib/tool/WashIcon.svelte';
 	import { washIcons } from '$lib/tool/wash-icons';
+	import { subscribeCalculatorRefresh } from '$lib/tool/calculator-refresh';
 
 	type AppView = 'calculator' | 'units';
 
@@ -32,6 +34,19 @@
 	let isDesktop = $state(
 		typeof window !== 'undefined' ? window.matchMedia(MD_QUERY).matches : false
 	);
+
+	onMount(() => {
+		return subscribeCalculatorRefresh(() => {
+			const settings = loadSettings();
+			appView = settings.appView;
+			padMode = settings.calcPadMode;
+			angleMode = settings.angleMode;
+			expression = '';
+			display = '0';
+			fresh = true;
+			undoStack = [];
+		});
+	});
 
 	$effect(() => {
 		if (typeof window === 'undefined') return;

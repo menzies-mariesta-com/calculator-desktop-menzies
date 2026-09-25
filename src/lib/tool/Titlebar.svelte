@@ -12,6 +12,7 @@
 	import type { AppearanceMode } from '$lib/store/local-storage/settings';
 	import WashIcon from '$lib/tool/WashIcon.svelte';
 	import { washIcons } from '$lib/tool/wash-icons';
+	import { requestCalculatorRefresh } from '$lib/tool/calculator-refresh';
 
 	let maximized = $state(false);
 	let appearance = $state<AppearanceMode>(getAppearance());
@@ -131,12 +132,13 @@
 	class="border-ink-border/15 bg-base-100/90 relative z-[200] flex h-10 shrink-0 items-center overflow-visible border-b px-1 backdrop-blur-sm"
 >
 	<div
-		class="flex min-w-0 flex-1 cursor-grab items-center gap-2 px-2 active:cursor-grabbing"
+		class="flex min-w-[8rem] flex-1 cursor-grab items-center gap-2 px-2 active:cursor-grabbing"
 		onpointerdown={startDrag}
 		role="presentation"
 	>
-		<span class="inline-flex min-w-0 items-baseline gap-1">
-			<span class="font-display text-base-content truncate text-sm font-semibold tracking-wide"
+		<span class="inline-flex max-w-full items-baseline gap-1">
+			<span
+				class="font-display text-base-content text-sm font-semibold tracking-wide whitespace-nowrap"
 				>{m.app_title()}</span
 			>
 			<span class="relative top-[0.15em] shrink-0 text-[0.65em] leading-none italic opacity-50"
@@ -150,6 +152,20 @@
 		data-no-drag
 		data-theme-menu
 	>
+		<div
+			class="{washRecipes.tooltipIcon('secondary', 'bottom')} relative z-[220]"
+			data-tip={m.refresh()}
+		>
+			<button
+				type="button"
+				class="btn btn-ghost btn-square btn-sm btn-secondary cursor-pointer"
+				aria-label={m.refresh()}
+				onclick={() => requestCalculatorRefresh()}
+			>
+				<WashIcon icon={washIcons['refresh-cw']} class="size-4" />
+			</button>
+		</div>
+
 		<div
 			class="{washRecipes.tooltipIcon('secondary', 'bottom')} relative z-[220]"
 			data-tip={m.theme_menu()}
