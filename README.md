@@ -71,6 +71,21 @@ See `.env.example` for the same notes.
 npm run tauri build
 ```
 
+## CI (manual)
+
+GitHub Actions do **not** run on push or pull request. Dispatch workflows from the repo UI:
+
+1. Open **Actions**.
+2. Select **CI** (lint, svelte-check, Vitest, rustfmt, clippy, cargo test, gitleaks) or **Release** (Tauri build + updater artifacts).
+3. Click **Run workflow**, choose the branch, then **Run workflow**.
+
+| Workflow | File                                                             | Notes                                                                  |
+| -------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| CI       | [`.github/workflows/ci.yml`](.github/workflows/ci.yml)           | Matrix: Linux (required), macOS/Windows (`continue-on-error`)          |
+| Release  | [`.github/workflows/release.yml`](.github/workflows/release.yml) | Needs `TAURI_SIGNING_PRIVATE_KEY` (and optional password) repo secrets |
+
+Release builds Linux deb/AppImage/rpm first; macOS and Windows are best-effort.
+
 ## Paths
 
 | Kind   | Location                                                                    |
